@@ -1,111 +1,150 @@
-# Galaxy-Idle-Clicker-Cheats
+# Galaxy Idle Clicker - Save Editor
 
-this is a cheats for Galaxy Idle Clicker
+A save editor for Galaxy Idle Clicker with a floating in-game UI panel and console commands.
 
----
-
-## ⚠️ Disclaimer
-This game have an OnLine features ( leaderboard ). I advise to put a rule in your firewall to block access to internet to avoid any issue.
----
-
-## 🛠️ Installation & Usage
-
-### Step 1: Enable Remote Debugging
-1. Open Steam, right-click **Galaxy Idle Clicker** in your library.
-2. Select **Properties** > **General** > **Launch Options**.
-3. Paste this command:
-   ```bat
-   GalaxyIdleClicker.exe --remote-allow-origins=* --remote-debugging-port=1234
-   ```
-4. Launch the game.
-
-### Step 2: Access Debug Interface
-1. Open Chrome/Firefox and visit:
-   ```url
-   http://localhost:1234
-   ```
-2. Click the **Galaxy Idle Clicker** debug target.
-
-### Step 3: Execute Cheat Script
-1. Normaly the devlopper tab is allready open on the right.
-2. Navigate to the **Console** tab. ( if it isnt allready on it by default )
-3. Paste the contents of [Edit User Data_cmd.js](https://raw.githubusercontent.com/official-notfishvr/Galaxy-Idle-Clicker-Cheats/refs/heads/main/Edit%20User%20Data_cmd.js) into the console.
-4. Press `Enter` to execute.
+> **Warning:** This game has online leaderboard features. Block the game's internet access via your firewall before using cheats to avoid any issues.
 
 ---
 
-## 🛠️ HOW TO USE
+## Setup
 
-So, basicly this script works as a SAVE EDITOR ! it dosnt moddify the game runing. 
+### 1. Enable Remote Debugging
 
-Meaning any commande will be effective only AFTER REBOOT OF THE GAME. and you NEED to quit the game WITHOUT SAVING. ( ALT+F4 / X of the window of the game)
+Right-click **Galaxy Idle Clicker** in Steam → Properties → General → Launch Options, and paste:
 
-1. run the game
-2. go to the url [localhost:1234](http://localhost:1234)
-3. past the script in the consol ( after allowing pasting ! ) You need to past the script each time you reboot the game and refresh the tab.
-4. SAVE INGAME ( to not lose any progresse )
-5. Use a command ( you can use multiple cmd quickly befor game auto save. I didnt find any way to post execute multiple command in a single time, so use them one by one else only the last one will work )
-6. ALT+F4 / quit game without saving
-7. reboot the game
-8. now an error appear in the Tab Browser it's NORMAL, just go to the previus page and refresh (F5) then reclick on the link. if you do not refresh the error will stay.
-
----
-
-## 🛠️ USEFULL INFORMATION
-
-So, basicly this script allow you to see the save clearly, and the dev of the game have named it's variable in a strait forward way. so you can use this cmd to get the save log.
-```bat
-cmd("DownloadUserData")
 ```
-save anywhere you want. Like that you can search for any variable you would want to modify easily with Notepad++ ( or any text editor )
+GalaxyIdleClicker.exe --remote-allow-origins=* --remote-debugging-port=1234
+```
 
-### Some usefull command
+Launch the game.
 
-Change the time the game think you exited the game. 
-I dont know if later in game you can have more but at start you can have bonus only for 1 day off so use [Milliseconds to Date](https://www.timecalculator.net/milliseconds-to-date) to get your base time.
-then remove 86400000 with calculator. put the number result in your cmd.
-  ```bat
-EditValue("offlineTime", 1751600860242) 
-   ```
+### 2. Open the Debug Interface
 
-Change the time the Light year started. 
-same here use the date you want. ( get the date and remove days, the time is caped at like 5 days I think to get the x25 so get your days in milli then remove 86400000x5)
-  ```bat
-EditValue("startGameTime", 1751359438205)
-   ```
+Open Chrome and go to:
+```
+http://localhost:1234
+```
 
-Change the time the blackHole started. ( I dont know if it has any use)
-  ```bat
-EditValue("blackHoleTime", 1751359438205)
-   ```
+Click the **Galaxy Idle Clicker** debug target. The DevTools panel should open automatically on the right.
 
-Change the number of meteorite destroyed.
-  ```bat
-EditValue("specialMeteoriteCount", {
-      "diamond": 199990,
-      "gold": 749990,
-      "satellite": 19999,
-      "amethyst": 49999
-    })
-   ```
+### 3. Load the Script (one-time setup)
 
-Change the time of the Buff potion timer. (300 days. AGAIN ! you need to copy/pase each one individualy else it wont work.
-CAREFULL I dont know what would happen if you use a potion you dont have unlock ! if you want the other potion just search in your TxT "potionTimer" and change the variable name in the cmd)
-  ```bat
-EditValue("damagePotionTimer", 25920000000)
-EditValue("hpPotionTimer", 25920000000)
-EditValue("junkPotionTimer", 25920000000)
-EditValue("plasmaPotionTimer", 25920000000)
-EditValue("garbagePotionTimer", 25920000000)
-EditValue("expPotionTimer", 25920000000)
-EditValue("prisonersPotionTimer", 25920000000)
-EditValue("citizensPotionTimer", 25920000000)
-EditValue("meteoritePotionTimer", 25920000000)
-EditValue("mineralsPotionTimer", 25920000000)
-   ```
+The easiest way — save it as a **Chrome Snippet** so you never paste again:
+
+1. In DevTools, go to **Sources** → **Snippets** (left sidebar)
+2. Click **+ New snippet**
+3. Paste the contents of [Edit User Data_cmd.js](https://raw.githubusercontent.com/official-notfishvr/Galaxy-Idle-Clicker-Cheats/refs/heads/main/Edit%20User%20Data_cmd.js)
+4. Press `Ctrl+S` to save, give it a name
+5. From now on: just press `Ctrl+Enter` (or right-click → Run) to load the panel
+
+A floating cheat panel will appear in the game window with all commands as clickable buttons.
 
 ---
 
-## 🛠️ CONCLUSION
+## How It Works
 
-If you need to modify something else, just use the save txt to find the name and then change the variable with a cmd. normaly the variable is basicly the same name InGame so just search for that.
+This is a **save editor** — it modifies your save file directly, not the running game. Changes only take effect after restarting the game.
+
+**Workflow:**
+
+1. Launch the game
+2. Go to `http://localhost:1234` in Chrome
+3. Run the snippet (Ctrl+Enter) — the cheat panel appears
+4. **Save your game in-game** first (to not lose progress)
+5. Click the commands you want in the panel
+6. **Quit without saving** — ALT+F4 or close the window
+7. Relaunch the game — your changes are now active
+
+> After quitting, the browser tab will show an error. That's normal. Go back, refresh (F5), and click the debug target again.
+
+---
+
+## Commands
+
+All commands are available as buttons in the floating panel, grouped by category. You can also call them from the console:
+
+```js
+cmd("CommandName")
+```
+
+| Command | Description |
+|---|---|
+| **Resources** | |
+| `MaxAllResources` | Max junk, plasma, energy, garbage, scrap, prisoners, citizens, colons, quarks, antimatter, cosmic dust |
+| `MaxMultipliers` | Max all supernova tab multipliers |
+| `MaxExtraCosmicDustLevels` | Max cosmic dust level multipliers |
+| `MaxExtraArmyTabLevels` | Max army tab multipliers (capped at 1999 to avoid crashes) |
+| `MaxMeteorite` | Max meteorite and minerals counts |
+| `MaxRadiations` | Max radiation counts |
+| `MaxSpecialMeteorites` | Max diamond, gold, satellite, amethyst meteorites |
+| `MaxAntimatter` | Max antimatter counts |
+| `MaxCosmicDust` | Max cosmic dust counts |
+| `MaxQuarks` | Max quark counts |
+| `MaxScrap` | Max scrap counts |
+| **Player** | |
+| `MaxLevels` | Max level and skill points (99999) |
+| `MaxDifficultyUnlocks` | Unlock normal, hard, and hell difficulties |
+| `ActivateAllBuffs` | Activate all buff flags |
+| `MaxPotionTimers` | Set all potion timers to 300 days |
+| `MaxShipStats` | Max ship HP, shield, bullet damage, upgrade levels |
+| `MaxMechTokens` | Max mech tokens and supernova overclock tokens |
+| `CompleteMechMissions` | Complete all mech upgrade missions (mechs 1-4) |
+| `MaxAutoUpgrades` | Unlock all auto-buy, auto-play, homing, turrets, clone ship features |
+| `MaxTurretsLevel` | Max turrets level |
+| **Combat** | |
+| `CompleteAllMechs` | Max total ships killed and kills per second |
+| `CompleteAllMechs2` | Max all 80 individual enemies killed counters |
+| `MaxShotUpgrades` | Max all shot upgrade counts |
+| `MaxMechMultipliers` | Max mech and buff multipliers |
+| `MaxPlanets` | Max planets completed count |
+| **Time** | |
+| `MaxTimeWarps` | Max all time warp counts (9999 each) |
+| `MaxOfflineTime` | Set offline time to 1 day ago (max offline bonus) |
+| `MaxStartGameTime` | Set LY run start to 5 days ago (max x25 bonus) |
+| `MaxBlackHoleTime` | Set black hole timer to 5 days ago |
+| **Achievements** | |
+| `MaxAllAchievements` | Max all 23 achievement categories |
+| `MaxAllPoints` | Max all point types (kills, levels, travel, BH, items, etc.) |
+| **Prestige** | |
+| `MaxSupernovaRuns` | Unlock supernova and max essence/tokens |
+| `MaxBlackHoleStats` | Max BH travel count, points, and unlock all BH passives |
+| **Utility** | |
+| `RunAll` | Run every command above in sequence |
+| `DownloadUserData` | Download your full save as `userData.txt` |
+
+---
+
+## Manual Edits
+
+For anything not covered by a command, download your save first, find the key in the txt file, then use:
+
+```js
+EditValue("keyName", value)
+```
+
+**Useful examples:**
+
+```js
+// Offline bonus time (1 day ago = max bonus)
+EditValue("offlineTime", Date.now() - 86400000)
+
+// LY run start time (5 days ago = max x25 bonus)
+EditValue("startGameTime", Date.now() - 86400000 * 5)
+
+// Black hole timer
+EditValue("blackHoleTime", Date.now() - 86400000 * 5)
+
+// Special meteorite counts
+EditValue("specialMeteoriteCount", { diamond: 199990, gold: 749990, satellite: 19999, amethyst: 49999 })
+
+// Single potion timer (300 days in ms)
+EditValue("damagePotionTimer", 25920000000)
+```
+
+> For potion timers, only set timers for potions you have already unlocked.
+
+---
+
+## Finding More Keys
+
+Run `cmd("DownloadUserData")` to get your full save as a txt file. Open it in any text editor and search for the variable name you want to change — the dev named everything clearly so it's usually obvious. Then use `EditValue("keyName", newValue)` to change it.
